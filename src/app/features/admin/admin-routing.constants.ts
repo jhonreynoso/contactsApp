@@ -1,0 +1,1 @@
+export const ADMIN_ROUTE_SEGMENT = 'admin';
