@@ -3,14 +3,14 @@ import { GridApi, ColDef } from 'ag-grid-community';
 import { ContactsService } from '../services/contacts.service';
 import { Contact } from '../models/contact.model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ListView } from '../../../../shared/utils/list-view';
 
 @Component({
   selector: 'app-records',
   templateUrl: './records.component.html',
   styleUrls: ['./records.component.scss']
 })
-export class RecordsComponent implements OnInit {
-  private _gridApi: GridApi<any> | undefined;
+export class RecordsComponent extends ListView<Contact> implements OnInit {
 
   @ViewChild('editContact')
   editContactTemplate!: TemplateRef<any>;
@@ -25,15 +25,15 @@ export class RecordsComponent implements OnInit {
   rowData: Contact[] = [];
   closeResult = '';
 
-  constructor(private _contactsService: ContactsService, private _modalService: NgbModal) { }
+  constructor(private _contactsService: ContactsService, private _modalService: NgbModal) {
+    super();
+  }
+
 
   ngOnInit() {
     this.loadContacts();
   }
 
-  onGridReady(params: any) {
-    this._gridApi = params.api;
-  }
 
   loadContacts() {
     this._contactsService.getContacts().subscribe((contacts) => {
