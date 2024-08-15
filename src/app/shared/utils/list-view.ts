@@ -3,7 +3,7 @@ import { GridApi } from 'ag-grid-community';
 
 // for demo purpuse about how we should create abstract class for handling widely use components
 export abstract class ListView<T> {
-    entityName = "";
+    abstract entityName: string;
     protected _gridApi: GridApi<T> | undefined;
 
     onGridReady(params: any) {

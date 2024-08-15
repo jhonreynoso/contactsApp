@@ -15,7 +15,7 @@ export class RecordsComponent extends ListView<Contact> implements OnInit {
   @ViewChild('editContact')
   editContactTemplate!: TemplateRef<any>;
   contactData: Contact | null = null;
-
+  entityName = "Contacts"
   columnDefs: ColDef<Contact>[] = [
     { field: 'name', headerName: 'Name', editable: true },
     { field: 'phoneNumber', headerName: 'Phone', editable: true, },
